@@ -149,25 +149,34 @@ do
 		_FDT=""
 	fi
 
-	if [ -d "${_BOOT_PATH}/${U_BOOT_FDT_OVERLAYS_DIR}" ]
+	if [ -d "${_BOOT_PATH}/${U_BOOT_FDT_OVERLAYS_DIR}${_VERSION}" ]
+	then
+		_U_BOOT_FDT_OVERLAYS_DIR=${U_BOOT_FDT_OVERLAYS_DIR}${_VERSION}
+	elif [ -d "${_BOOT_PATH}/${U_BOOT_FDT_OVERLAYS_DIR}" ]
+	then
+		_U_BOOT_FDT_OVERLAYS_DIR=${U_BOOT_FDT_OVERLAYS_DIR}
+	else
+		_U_BOOT_FDT_OVERLAYS_DIR=""
+	fi
+	if [ -d "${_BOOT_PATH}/${_U_BOOT_FDT_OVERLAYS_DIR}" ]
 	then
 		_DTBO_LIST=""
 		if [ -n "${U_BOOT_FDT_OVERLAYS}" ]
 		then
 			for _DTBO in ${U_BOOT_FDT_OVERLAYS}
 			do
-				if [ -f "${_BOOT_PATH}/${U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}" ]
+				if [ -f "${_BOOT_PATH}/${_U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}" ]
 				then
-					_DTBO_LIST="${_DTBO_LIST} ${U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}"
+					_DTBO_LIST="${_DTBO_LIST} ${_U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}"
 				fi
 			done
 		else
-			for _DTBO_PATH in "${_BOOT_PATH}/${U_BOOT_FDT_OVERLAYS_DIR}/"*.dtbo
+			for _DTBO_PATH in "${_BOOT_PATH}/${_U_BOOT_FDT_OVERLAYS_DIR}/"*.dtbo
 			do
 				if [ -f "${_DTBO_PATH}" ]
 				then
 					_DTBO=$(basename "${_DTBO_PATH}")
-					_DTBO_LIST="${_DTBO_LIST} ${U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}"
+					_DTBO_LIST="${_DTBO_LIST} ${_U_BOOT_FDT_OVERLAYS_DIR}/${_DTBO}"
 				fi
 			done
 		fi
