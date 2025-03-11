@@ -47,7 +47,7 @@ then
 	_BOOT_PATH="/boot"
 	if [ "${U_BOOT_SYNC_DTBS}" = "true" ]
 	then
-		_FDT_DIR="/dtb-"
+		_FDT_DIR="/dtbs/"
 	fi
 else
 	# / and /boot are on the same filesystem
