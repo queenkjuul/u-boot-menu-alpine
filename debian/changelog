@@ -1,3 +1,22 @@
+u-boot-menu (4.2.4) unstable; urgency=medium
+
+  [ Johannes Schauer Marin Rodrigues ]
+  * etc/kernel/post{inst,rm}.d/zz-u-boot-menu: check whether u-boot-menu
+    is still installed before proceeding (Closes: #1061687)
+
+  [ Markus Burri ]
+  * Separate devicetree overlay directory for each kernel
+    (Closes: #1095811, #1036730)
+
+  [ Vagrant Cascadian ]
+  * Use /dtbs/ directory when using U_BOOT_SYNC_DTBS, to avoid breaking
+    installations where flash-kernel is installed. (Closes: #1091979)
+  * debian/control: Update Standards-Version to 4.7.2.
+  * u-boot-menu postinst: Do not call u-boot-update with a full path.
+  * read-config: Mark as executable.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 08 Apr 2025 15:33:04 -0700
+
 u-boot-menu (4.2.3) unstable; urgency=medium
 
   [ Vagrant Cascadian ]
