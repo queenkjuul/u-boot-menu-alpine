@@ -1,2 +1,3 @@
 etc/default
+etc/u-boot-menu/conf.d
 usr/sbin
